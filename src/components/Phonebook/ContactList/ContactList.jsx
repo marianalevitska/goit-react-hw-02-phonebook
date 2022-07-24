@@ -1,12 +1,21 @@
 import stl from './contactList.module.css';
+import ContactItem from './ContactItem';
 
-function ContactList() {
+function ContactList({ contacts, onDelete }) {
+
+    const elements = contacts.map(({ id, name, number }) => (
+        <ContactItem
+            key={id}
+            options={[id, name, number]}
+            onDelete={onDelete}
+        />
+    ));
     return (
-        <div>
-
-        </div>
+        <ul className={stl.list}>
+            {elements}
+        </ul>
     )
 }
 
 
-export default ContactForm;
+export default ContactList;
